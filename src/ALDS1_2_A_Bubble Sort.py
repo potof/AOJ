@@ -1,21 +1,17 @@
 
-n = int(input())
+_ = input()
 a = list(map(int, input().split()))
 
-def bubble_sort(a, n):
-    flag = True
+def bubble_sort(a):
     count = 0
-    while flag:
-        flag = False
-        for i in range(n-1, 0, -1):
-            if a[i] < a[i-1]:
-                tmp = a[i]
-                a[i] = a[i-1]
-                a[i-1] = tmp
-                flag = True
+    length = len(a)
+    for i in range(length - 1):
+        for j in range((length - i) - 1):
+            if a[j] > a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
                 count += 1
     return a, count
 
-sorted_a, count = bubble_sort(a, n)
+sorted_a, count = bubble_sort(a)
 print(*sorted_a)
 print(count)
