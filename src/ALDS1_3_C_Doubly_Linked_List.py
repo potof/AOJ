@@ -1,16 +1,21 @@
+import sys
+from collections import deque
 
 n = int(input())
-ans = []
+ans = deque([])
 
 for i in range(n):
-    l = list(input().split())
+    l = list(sys.stdin.readline().split())
 
     if l[0] == "insert":
-        ans.insert(0, l[1])
-    elif l[0] == "delete" and l[1] in ans:
-        del ans[ans.index(l[1])]
+        ans.appendleft(l[1])
+    elif l[0] == "delete":
+        try:
+            ans.remove(l[1])
+        except:
+            pass
     elif l[0] == "deleteFirst":
-        del ans[0]
+        ans.popleft()
     elif l[0] == "deleteLast":
-        del ans[-1]
+        ans.pop()
 print(*ans)
