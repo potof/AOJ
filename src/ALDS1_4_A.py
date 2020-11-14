@@ -1,14 +1,12 @@
 
 n = input()
-list_s = list(map(int, input().split()))
+list_s = list(set(input().split()))
 q = input()
-list_t = list(map(int, input().split()))
+list_t = list(set(input().split()))
 
 ans = 0
-for i in list(set(list_t)):
-    for j in list(set(list_s)):
-        if i == j:
-            ans += 1
-            continue
+for t in list_t:
+    if list_s.count(t) > 0:
+        ans += 1
 
 print(ans)
